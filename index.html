@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sort Visualizer BD — Sorting Algorithm Visualizer</title>
+<meta name="description" content="Watch sorting algorithms sort bars step by step: Bubble, Selection, Insertion, Merge and Quick sort. Offline, bilingual EN/Bangla.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1 id="appTitle">Sort Visualizer BD</h1>
+    <p id="appSub" class="sub">Watch sorting algorithms work, step by step.</p>
+  </div>
+  <button id="langBtn" class="lang-btn" type="button">বাংলা</button>
+</header>
+
+<main>
+  <section class="card" aria-label="controls">
+    <div class="row wrap">
+      <label class="field"><span id="lblAlgo">Algorithm</span>
+        <select id="algoSel">
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+        </select>
+      </label>
+      <label class="field"><span id="lblSize">Array size</span>
+        <span class="range-row"><input id="sizeRange" type="range" min="8" max="60" value="24"><b id="sizeVal">24</b></span>
+      </label>
+      <label class="field"><span id="lblSpeed">Speed</span>
+        <span class="range-row"><input id="speedRange" type="range" min="1" max="10" value="5"><b id="speedVal">5</b></span>
+      </label>
+    </div>
+
+    <div class="row wrap">
+      <span id="lblGen" class="field-label">New array:</span>
+      <button type="button" class="chip gen-btn" data-kind="random" id="genRandom">Random</button>
+      <button type="button" class="chip gen-btn" data-kind="nearly" id="genNearly">Nearly sorted</button>
+      <button type="button" class="chip gen-btn" data-kind="reversed" id="genReversed">Reversed</button>
+      <button type="button" class="chip gen-btn" data-kind="few" id="genFew">Few unique</button>
+    </div>
+
+    <div class="row wrap">
+      <label class="field grow"><span id="lblCustom">Custom array (comma-separated numbers)</span>
+        <input id="customInput" type="text" inputmode="numeric" placeholder="e.g. 5, 2, 9, 1, 7">
+      </label>
+      <button type="button" id="customBtn" class="btn">Use custom array</button>
+    </div>
+    <p id="customErr" class="error" hidden></p>
+
+    <div class="row wrap">
+      <button type="button" id="playBtn" class="btn primary">▶ Play</button>
+      <button type="button" id="stepBtn" class="btn">Step</button>
+      <button type="button" id="resetBtn" class="btn">Reset</button>
+      <button type="button" id="skipBtn" class="btn">Skip to end</button>
+      <span id="status" class="status" role="status">Ready — press Play.</span>
+    </div>
+
+    <div class="stats" aria-label="statistics">
+      <div><span id="statCmpLbl">Comparisons</span><b id="statCmp">0</b></div>
+      <div><span id="statSwapLbl">Swaps / writes</span><b id="statSwap">0</b></div>
+      <div><span id="statStepLbl">Step</span><b id="statStep">0 / 0</b></div>
+    </div>
+  </section>
+
+  <section class="card stage-card" aria-label="visualization">
+    <div id="bars" class="bars" aria-hidden="true"></div>
+    <p id="arrayLine" class="array-line"></p>
+  </section>
+
+  <section class="card" aria-label="learn">
+    <h2 id="learnTitle">How it works</h2>
+    <p id="algoBlurb" class="blurb"></p>
+    <table class="cx">
+      <thead><tr><th id="thCase">Case</th><th id="thTime">Time</th></tr></thead>
+      <tbody>
+        <tr><td id="tdBest">Best</td><td id="cxBest">–</td></tr>
+        <tr><td id="tdAvg">Average</td><td id="cxAvg">–</td></tr>
+        <tr><td id="tdWorst">Worst</td><td id="cxWorst">–</td></tr>
+        <tr><td id="tdSpace">Extra space</td><td id="cxSpace">–</td></tr>
+        <tr><td id="tdStable">Stable</td><td id="cxStable">–</td></tr>
+      </tbody>
+    </table>
+    <p id="legend" class="legend">Teal = unsorted · Amber = comparing · Red = swapping / writing · Purple = pivot · Green = in final place</p>
+  </section>
+</main>
+
+<footer>
+  <p id="footNote">Offline learning tool. No data leaves your device. Built for students learning data structures — complexity figures are the standard textbook values for each algorithm.</p>
+</footer>
+
+<script src="js/sorting.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
